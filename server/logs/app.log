@@ -114,3 +114,61 @@ Traceback (most recent call last):
   File "/usr/lib/python3.10/asyncio/locks.py", line 214, in wait
     await fut
 asyncio.exceptions.CancelledError
+2024-06-03 10:25:11,080 - uvicorn.error - INFO - Started server process [104896]
+2024-06-03 10:25:11,080 - uvicorn.error - INFO - Waiting for application startup.
+2024-06-03 10:25:11,080 - uvicorn.error - INFO - Application startup complete.
+2024-06-03 10:39:09,312 - uvicorn.error - INFO - Shutting down
+2024-06-03 10:39:09,413 - uvicorn.error - INFO - Waiting for connections to close. (CTRL+C to force quit)
+2024-06-03 10:39:12,228 - uvicorn.error - INFO - Finished server process [104896]
+2024-06-03 10:39:12,233 - uvicorn.error - ERROR - Traceback (most recent call last):
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/routing.py", line 743, in lifespan
+    await receive()
+  File "/home/azim/.local/lib/python3.10/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+    return await self.receive_queue.get()
+  File "/usr/lib/python3.10/asyncio/queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+2024-06-03 10:39:12,234 - uvicorn.error - ERROR - Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/azim/.local/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 412, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/home/azim/.local/lib/python3.10/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+  File "/home/azim/.local/lib/python3.10/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/middleware/cors.py", line 146, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/routing.py", line 758, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/routing.py", line 778, in app
+    await route.handle(scope, receive, send)
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/routing.py", line 299, in handle
+    await self.app(scope, receive, send)
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/routing.py", line 79, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/routing.py", line 77, in app
+    await response(scope, receive, send)
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/responses.py", line 264, in __call__
+    await wrap(partial(self.listen_for_disconnect, receive))
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/responses.py", line 260, in wrap
+    await func()
+  File "/home/azim/.local/lib/python3.10/site-packages/starlette/responses.py", line 237, in listen_for_disconnect
+    message = await receive()
+  File "/home/azim/.local/lib/python3.10/site-packages/uvicorn/protocols/http/h11_impl.py", line 542, in receive
+    await self.message_event.wait()
+  File "/usr/lib/python3.10/asyncio/locks.py", line 214, in wait
+    await fut
+asyncio.exceptions.CancelledError
